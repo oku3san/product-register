@@ -6,6 +6,7 @@ jobs:
         name: Test
         runs-on: ubuntu-latest
         steps:
+            - run: pwd && ls
             - run: docker-compose up --build -d
             - run: docker-compose exec --env 'RAILS_ENV=test' web rails db:create
             - run: docker-compose exec --env 'RAILS_ENV=test' web rails db:migrate
