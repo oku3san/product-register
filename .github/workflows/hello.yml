@@ -3,7 +3,10 @@ on: push
 
 jobs:
     build:
-        name: Greeting
+        name: Test
         runs-on: ubuntu-latest
         steps:
-            - run: echo "Hello, World!"
+            - run: docker-compose up --build -d
+            - run: rails db:create
+            - run: rails db:migrate
+            - run: rails test
